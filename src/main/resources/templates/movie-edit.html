@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sửa thông tin phim</title>
+</head>
+<body>
+<form th:action="@{/movies/edit}" method="post" th:object="${movie}">
+    <input type="hidden" th:field="*{id}">
+    <label for="title">Tên phim</label>
+    <input type="text" name="title" id="title" th:field="*{title}">
+    <br>
+    <label for="genre">Thể loại</label>
+    <input type="text" name="genre" id="genre" th:field="*{genre}">
+    <br>
+    <label for="duration">Thời lượng</label>
+    <input type="number" name="duration" id="duration" th:field="*{duration}">
+    <br>
+    <button type="submit">Cập nhật</button>
+</form>
+</body>
+</html>

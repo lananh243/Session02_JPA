@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách lịch chiếu</title>
+</head>
+<body>
+    <h3>Danh sách lịch chiếu</h3>
+    <a th:href="@{/showtimes/add}">
+        <button>Thêm mới</button>
+    </a>
+    <br><br>
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+        <tr>
+            <th>STT</th>
+            <th>Phim</th>
+            <th>Phòng chiếu</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Số ghế trống</th>
+            <th>Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="showtime, loop : ${showtimes}">
+            <td th:text="${loop.index + 1}"></td>
+            <td th:text="${showtime.movie.title}"></td>
+            <td th:text="${showtime.screenRoom.name}"></td>
+            <td th:text="${showtime.startTime}"></td>
+            <td th:text="${showtime.endTime}"></td>
+            <td th:text="${showtime.numberSeatEmpty}"></td>
+            <td>
+                <a th:href="@{'/showtimes/edit/' + ${showtime.id}}">
+                    <button>Sửa</button>
+                </a>
+                <a th:href="@{'/showtimes/delete/' + ${showtime.id}}"
+                   onclick="return confirm('Bạn có chắc chắn muốn lịch chiếu phim này không?')">
+                    <button>Xóa</button>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
